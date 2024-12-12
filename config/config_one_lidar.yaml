@@ -19,35 +19,8 @@ lidar:
       use_lidar_clock: false       #True--Use the lidar clock as the message timestamp
                                    #False-- Use the system clock as the timestamp                        
       pcap_path: /home/robosense/lidar.pcap #The path of pcap file
-      x: 1
-      y: 0
-      z: 0
-      roll: 0
-      pitch: 90
-      yaw: 0
     ros:
       ros_frame_id: rslidar                           #Frame id of packet message and point cloud message
-      ros_recv_packet_topic: /vertical_rslidar_packets          #Topic used to receive lidar packets from ROS
-      ros_send_packet_topic: /vertical_rslidar_packets          #Topic used to send lidar packets through ROS
-      ros_send_point_cloud_topic: /vertical_rslidar_points      #Topic used to send point cloud through ROS
-  - driver:
-      lidar_type: RSBP            
-      msop_port: 6699              
-      difop_port: 7788             
-      start_angle: 0               
-      end_angle: 360             
-      min_distance: 0.2            
-      max_distance: 200           
-      use_lidar_clock: false       
-      pcap_path: /home/robosense/lidar.pcap     
-      x: 1
-      y: 0
-      z: 2.5
-      roll: 0.1
-      pitch: 0.2
-      yaw: 1.57
-    ros:
-      ros_frame_id: rslidar                           #Frame id of packet message and point cloud message
-      ros_recv_packet_topic: /horizontal_rslidar_packets          #Topic used to receive lidar packets from ROS
-      ros_send_packet_topic: /horizontal_slidar_packets          #Topic used to send lidar packets through ROS
-      ros_send_point_cloud_topic: /horizontal_rslidar_points      #Topic used to send point cloud through ROS
+      ros_recv_packet_topic: /rslidar_packets          #Topic used to receive lidar packets from ROS
+      ros_send_packet_topic: /rslidar_packets          #Topic used to send lidar packets through ROS
+      ros_send_point_cloud_topic: /rslidar_points      #Topic used to send point cloud through ROS
