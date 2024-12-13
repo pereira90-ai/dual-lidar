@@ -127,7 +127,7 @@ sudo apt-get install -y  libpcap-dev
 (2) Go back to the root of workspace, run the following commands to compile and run. (if using zsh, replace the 2nd command with *source devel/setup.zsh*).
 
 ```sh
-catkin_make
+catkin_make -DENABLE_TRANSFORM=ON
 source devel/setup.bash
 roslaunch rslidar_sdk start.launch
 ```
