@@ -80,19 +80,10 @@ For installation, please refer to http://wiki.ros.org.
 
 This brings a lot of convenience, since you don't have to handle version conflict.
 
-### 3.2 ROS2
-
-To use rslidar_sdk in the ROS2 environment, please install below libraries.
-+ Ubuntu 16.04 - Not supported
-+ Ubuntu 18.04 - ROS2 Eloquent desktop
-+ Ubuntu 20.04 - ROS2 Galactic desktop
-+ Ubuntu 22.04 - ROS2 Humble desktop
-
-For installation, please refer to https://index.ros.org/doc/ros2/Installation/Eloquent/Linux-Install-Debians/
 
 **Please do not install ROS and ROS2 on the same computer, to avoid possible conflict and manually install some libraries, such as Yaml.**
 
-### 3.3 Yaml (Essential) 
+### 3.2 Yaml (Essential) 
 
 version: >= v0.5.2
 
@@ -105,7 +96,7 @@ sudo apt-get update
 sudo apt-get install -y libyaml-cpp-dev
 ```
 
-### 3.4 libpcap (Essential) 
+### 3.3 libpcap (Essential) 
 
 version: >= v1.7.4
 
@@ -131,22 +122,6 @@ catkin_make -DENABLE_TRANSFORM=ON
 source devel/setup.bash
 roslaunch rslidar_sdk start.launch
 ```
-
-### 4.2 Compile with ROS2 colcon
-
-(1) Create a new workspace folder, and create a *src* folder in it. Then put the rslidar_sdk project in the *src* folder.
-
-(2) Download the packet definition project in ROS2 through [link](https://github.com/RoboSense-LiDAR/rslidar_msg), then put the project rslidar_msg in the *src* folder you just created.
-
-(3) Go back to the root of workspace, run the following commands to compile and run. (if using zsh, replace the 2nd command with *source install/setup.zsh*).
-```sh
-colcon build
-source install/setup.bash
-ros2 launch rslidar_sdk start.py
-```
-
-Another version of start.py may be used, since it is different on different versios of ROS2. For example, elequent_start.py is used instead for ROS2 elequent.
-
 
 
 ## 5 Introduction to parameters
