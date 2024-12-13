@@ -153,7 +153,7 @@ The default IP address of the RS-BPearl Lidar camera's ip address is 192.168.1.2
   Default ports are 6699 and 7788 so if you plugged in dual lidar they are all set as 6699 and 7799. So you need to set one differently
   In the example used 6999 and 7888.
   Via webinterface of Lidar camera as mentioned in the second step.
-
+```
 All the connection is done.
 Then let's dive into the lidar sdk configuration.
 
