@@ -18,7 +18,7 @@ The `common` part specifies the source of LiDAR packets, and where to publish po
 common:
   msg_source: 1                                         
   send_packet_ros: false                               
-  send_point_cloud_ros: false                           
+  send_point_cloud_ros: true                           
 ```
 
 - msg_source
@@ -52,7 +52,7 @@ The `lidar` part needs to be adjusted for every LiDAR seperately.
 ```yaml
 lidar:
   - driver:
-      lidar_type: RS128           
+      lidar_type: RSBP           
       msop_port: 6699             
       difop_port: 7788            
       start_angle: 0              
@@ -121,7 +121,7 @@ common:
   send_point_cloud_ros: true                           
 lidar:
   - driver:
-      lidar_type: RS128           
+      lidar_type: RSBP           
       msop_port: 6699             
       difop_port: 7788            
       start_angle: 0              
@@ -138,7 +138,24 @@ lidar:
 
 ### 2.3.2 Multi Lidar Case
 
-Connect to 1 LiDAR of RS128, and 2 LiDARs of RSBP, and send point cloud to ROS.
+Connect to 2 LiDARs of RSBP, and send point cloud to ROS.
+
+*First of all you must configure Lidar cmaeras accordingly.*
+```text
+Connecting 2 Lidars simutaneously!
+
+The default IP address of the RS-BPearl Lidar camera's ip address is 192.168.1.200
+1. You must configure your IP address of IP adapter(Lidar connected) as 192.168.1.x/24
+2. Set Lidars' IP address differently. (with 192.168.1.200 and 192.168.1.201)
+  Plug only one lidar to the Ethernet and set IP address as 192.168.1.201. (Via web interface of Lidar at http://192.168.1.200)
+  Plug in another lidar to the different IP adapter.
+3. Set MSOP and DIFOP port accordingly.
+  Default ports are 6699 and 7788 so if you plugged in dual lidar they are all set as 6699 and 7799. So you need to set one differently
+  In the example used 6999 and 7888.
+  Via webinterface of Lidar camera as mentioned in the second step.
+
+All the connection is done.
+Then let's dive into the lidar sdk configuration.
 
 *Pay attention to the indentation of the `lidar` part*
 
@@ -149,23 +166,9 @@ common:
   send_point_cloud_ros: true                           
 lidar:
   - driver:
-      lidar_type: RS128           
+      lidar_type: RSBP           
       msop_port: 6699             
       difop_port: 7788            
-      start_angle: 0              
-      end_angle: 360               
-      min_distance: 0.2            
-      max_distance: 200            
-      use_lidar_clock: false        
-    ros:
-      ros_frame_id: rslidar           
-      ros_recv_packet_topic: /middle/rslidar_packets    
-      ros_send_packet_topic: /middle/rslidar_packets    
-      ros_send_point_cloud_topic: /middle/rslidar_points      
-  - driver:
-      lidar_type: RSBP           
-      msop_port: 1990             
-      difop_port: 1991            
       start_angle: 0              
       end_angle: 360               
       min_distance: 0.2            
@@ -178,8 +181,8 @@ lidar:
       ros_send_point_cloud_topic: /left/rslidar_points      
   - driver:
       lidar_type: RSBP           
-      msop_port: 2010             
-      difop_port: 2011            
+      msop_port: 6999             
+      difop_port: 7888            
       start_angle: 0              
       end_angle: 360               
       min_distance: 0.2            
